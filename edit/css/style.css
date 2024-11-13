@@ -1,0 +1,215 @@
+.w-450 {
+	width: 450px;
+}
+.vh-100 {
+	min-height: 100vh;
+}
+.w-350 {
+	width: 350px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+  }
+  
+  body {
+	overflow: hidden;
+	background-image: url("../img/bgmap.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+  }
+  
+  /* Tooltip styles */
+  #name {
+	position: absolute;
+	background-color: white;
+	width: fit-content;
+	opacity: 0;
+	border-radius: 5px;
+	border: 3px solid rgb(245, 128, 128);
+	padding: 0px 5px;
+	font-size: 1.5rem;
+	transition: opacity 0.3s;
+	z-index: 1000; /* Ensure the label appears on top */
+  }
+  
+  svg path {
+	cursor: pointer;
+  }
+  
+  /* Sliding column styles */
+  #slidingColumn {
+	position: absolute;
+	top: 0;
+	right: -300px;
+	width: 300px;
+	height: 100%;
+	background-color: white;
+	box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+	transition: right 0.3s ease;
+	z-index: 10; /* Lower z-index than the label */
+  }
+  
+  #slidingColumn.show {
+	right: 0;
+  }
+  
+  #closeButton {
+	margin: 10px;
+	padding: 10px;
+	background-color: rgb(245, 128, 128);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 1rem;
+  }
+  
+  .pin {
+	display: block;
+	margin: 10px;
+	padding: 10px;
+	background-color: rgb(235, 235, 235);
+	border-radius: 5px;
+	text-align: center;
+	cursor: pointer;
+  }
+  
+  .pin:hover {
+	background-color: rgb(220, 220, 220);
+  }
+  
+  /* Map container styles */
+  #mapContainer {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  /* For Admin Style */
+  
+  .sidebar {
+	position: fixed;
+	left: -250px;
+	width: 250px;
+	height: 100%;
+	background: #042331;
+	transition: all .5s ease;
+  }
+  .sidebar header {
+	font-size: 22px;
+	color: white;
+	line-height: 70px;
+	text-align: center;
+	background: #063146;
+	user-select: none;
+  }
+  .sidebar ul a{
+	display: block;
+	height: 100%;
+	width: 100%;
+	line-height: 65px;
+	font-size: 16px;
+	text-decoration: none;
+	color: white;
+	padding-left: 40px;
+	box-sizing: border-box;
+	border-bottom: 1px solid black;
+	border-top: 1px solid rgba(255,255,255,.1);
+	transition: .4s;
+  }
+  ul li:hover a{
+	padding-left: 50px;
+  }
+  .sidebar ul a i{
+	margin-right: 16px;
+  }
+  #check{
+	display: none;
+  }
+  label #btn,label #cancel{
+	position: absolute;
+	background: #042331;
+	border-radius: 3px;
+	cursor: pointer;
+  }
+  label #btn{
+	left: 40px;
+	top: 25px;
+	font-size: 35px;
+	color: white;
+	padding: 6px 12px;
+	transition: all .5s;
+  }
+  label #cancel{
+	z-index: 1111;
+	left: -195px;
+	top: 17px;
+	font-size: 30px;
+	color: #f6f7f8;
+	padding: 4px 9px;
+	transition: all .5s ease;
+  }
+  #check:checked ~ .sidebar{
+	left: 0;
+  }
+  #check:checked ~ label #btn{
+	left: 250px;
+	opacity: 0;
+	pointer-events: none;
+  }
+  #check:checked ~ label #cancel{
+	left: 195px;
+  }
+  #check:checked ~ section{
+	margin-left: 250px;
+  }
+  
+  .custom-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 20px;
+	border: 1px solid #ccc;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+  }
+  
+  .custom-modal button {
+	margin: 5px;
+	padding: 10px;
+	cursor: pointer;
+  }
+  
+  .custom-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 20px;
+	border: 1px solid #ccc;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+  }
+  
+  .custom-modal button {
+	margin: 5px;
+	padding: 10px;
+	cursor: pointer;
+  }
+
+  .form-popup {
+	display: none;
+  }
