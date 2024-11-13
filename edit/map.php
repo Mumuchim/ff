@@ -7,11 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FixFinder</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="css/report.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/report.css">
 </head>
 
 <body id="body">
+
+    <!-- <div id="name">
+        <p id="namep"><?php echo htmlspecialchars($user_id); ?></p> 
+    </div> -->
+
     <div id="slidingColumn">
         <button id="closeButton">Close</button>
         <div id="pins"></div>
@@ -19,19 +24,52 @@
         <!-- Pin Icons -->
         <img 
             id="cautionIcon" 
-            src="img/Caution_noshadow.png" 
+            src="img/Caution_shadow.png" 
             alt="Caution Pin" 
-            style="width: 50px; height: auto; position: absolute; top: 150px; right: 200px; cursor: pointer; margin: 10px; z-index: 20;"
+            style="width: 45px; height: auto; position: absolute; top: 135px; right: 170px; cursor: pointer; margin: 10px; z-index: 20;"
             onclick="preparePin('cautionPin')"
         />
-        
+        <span style="font-size: 13px; color: #ffffff; position: absolute; top: 165px; right: 90px;"> Hazard Pin </span>
         <img 
             id="cleaningIcon" 
-            src="img/Cleaning_noshadow.png" 
+            src="img/Cleaning_shadow.png" 
             alt="Cleaning Pin" 
-            style="width: 50px; height: auto; position: absolute; top: 220px; right: 200px; cursor: pointer; margin: 10px; z-index: 20;"
+            style="width: 45px; height: auto; position: absolute; top: 205px; right: 170px; cursor: pointer; margin: 10px; z-index: 20;"
             onclick="preparePin('cleaningPin')"
         />
+        <span style="font-size: 13px; color: #ffffff; position: absolute; top: 235px; right: 80px;"> Cleaning Pin </span>
+        <img 
+            id="electricalIcon" 
+            src="img/Electrical Hazard_shadow.png" 
+            alt="Electrical Pin" 
+            style="width: 45px; height: auto; position: absolute; top: 275px; right: 170px; cursor: pointer; margin: 10px; z-index: 20;"
+            onclick="preparePin('electricalPin')"
+        />
+        <span style="font-size: 13px; color: #ffffff; position: absolute; top: 305px; right: 80px;"> Electrical Pin </span>
+        <img 
+            id="itIcon" 
+            src="img/IT Maintenance_shadow.png" 
+            alt="IT Maintenance Pin" 
+            style="width: 45px; height: auto; position: absolute; top: 345px; right: 170px; cursor: pointer; margin: 10px; z-index: 20;"
+            onclick="preparePin('itPin')"
+        />
+        <span style="font-size: 13px; color: #ffffff; position: absolute; top: 375px; right: 43px;"> IT Maintenance Pin </span>
+        <img 
+            id="repairIcon" 
+            src="img/Repair_shadow.png" 
+            alt="Repair Pin" 
+            style="width: 45px; height: auto; position: absolute; top: 415px; right: 170px; cursor: pointer; margin: 10px; z-index: 20;"
+            onclick="preparePin('repairPin')"
+        />
+        <span style="font-size: 13px; color: #ffffff; position: absolute; top: 445px; right: 95px;"> Repair Pin </span>
+        <img 
+            id="requestIcon" 
+            src="img/Request_shadow.png" 
+            alt="Request Pin" 
+            style="width: 45px; height: auto; position: absolute; top: 485px; right: 170px; cursor: pointer; margin: 10px; z-index: 20;"
+            onclick="preparePin('requestPin')"
+        />
+        <span style="font-size: 13px; color: #ffffff; position: absolute; top: 515px; right: 85px;"> Request Pin </span>
         <!-- Add other icons similarly -->
         
         <!-- The Confirm Button will appear when a pin is selected -->
@@ -133,7 +171,7 @@
                 </text>         
 
             <g style="cursor: pointer;" onclick="showFloor(2)">
-                <image href="img/2nd.svg" x="1120" y="1000" width="60" height="60" />
+                <image href="../pins/2nd.svg" x="1120" y="1000" width="60" height="60" />
             </g>
             </g>
 
@@ -212,7 +250,7 @@
                 OSP/Huddle
                 </text>
                 <g style="cursor: pointer;" onclick="showFloor(1)">
-                    <image href="img/1st.svg" x="1120" y="1000" width="60" height="60" />
+                    <image href="../pins/1st.svg" x="1120" y="1000" width="60" height="60" />
                 </g>
             </g>
         </svg>
@@ -221,7 +259,7 @@
     <body class="report_details">
         <button class="open-button" onclick="openForm()">new report</button>
         <div class="form-popup" id="myForm">
-            <form action="/php/submit_rep.php" method="POST" enctype="multipart/form-data" class="form-container">
+            <form action="submit_report.php" method="POST" enctype="multipart/form-data" class="form-container">
                 <div class="report">
                     <h1>Report</h1>
     
@@ -262,8 +300,8 @@
             </form>
         </div>
     
-    <script src="js/app.js"></script>
     <script src="js/loadSidebar.js"></script>
+    <script src="js/app.js"></script>
 
 </body>
 
