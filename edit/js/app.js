@@ -1,5 +1,8 @@
 document.getElementById('secondFloor').style.display = 'none';
 
+let lastClonedPin = null; // Track the most recently cloned pin
+let pinPlacedManually = false; // Flag to track if a pin was placed manually
+
 function showFloor(floor) {
     const firstFloor = document.getElementById('firstFloor');
     const secondFloor = document.getElementById('secondFloor');
@@ -128,11 +131,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 pin.removeEventListener('mouseup', onMouseUp);
 
                 pin.addEventListener('click', () => {
-                    showPinOptions(pin, pinId);
+                    // Only show the modal if the pin wasn't placed manually
+                    if (!pinPlacedManually) {
+                        showPinOptions(pin, pinId);
+                    }
                 });
 
                 // Automatically show the report form after confirmation
                 openForm();
+                pinPlacedManually = true;  // Set the flag to true after pin placement
             } else {
                 makeDraggable(pin);
             }
@@ -174,9 +181,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         savePinPositions();
 
+        // Track the most recently cloned pin
+        lastClonedPin = clone;
+
         makeDraggable(clone);
         clone.addEventListener('click', () => {
-            showPinOptions(clone, pinId);
+            // Only show the modal if the pin wasn't placed manually
+            if (!pinPlacedManually) {
+                showPinOptions(clone, pinId);
+            }
         });
     }
 
@@ -199,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Show modal with pin options
 function showPinOptions(pinElement, pinId) {
+    // Check if a modal already exists to prevent multiple modals
     if (document.querySelector('.custom-modal')) {
         return;
     }
@@ -261,6 +275,19 @@ function openForm() {
 
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
+
+    // Remove the most recent cloned pin if it exists
+    if (lastClonedPin) {
+        const mapContainer = document.getElementById('mapContainer');
+        mapContainer.removeChild(lastClonedPin);
+        
+        // Remove the pin data from pinPositions
+        pinPositions = pinPositions.filter(p => p.pinId !== lastClonedPin.id);
+        savePinPositions();
+
+        // Reset the lastClonedPin reference
+        lastClonedPin = null;
+    }
 }
 
-document.getElementById('reportsButton').addEventListener('click', openForm);
+document.getElementById("cancelRequestButton").addEventListener('click', closeForm);

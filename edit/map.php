@@ -171,7 +171,7 @@
                 </text>         
 
             <g style="cursor: pointer;" onclick="showFloor(2)">
-                <image href="../pins/2nd.svg" x="1120" y="1000" width="60" height="60" />
+                <image href="pins/2nd.svg" x="1120" y="1000" width="60" height="60" />
             </g>
             </g>
 
@@ -250,7 +250,7 @@
                 OSP/Huddle
                 </text>
                 <g style="cursor: pointer;" onclick="showFloor(1)">
-                    <image href="../pins/1st.svg" x="1120" y="1000" width="60" height="60" />
+                    <image href="pins/1st.svg" x="1120" y="1000" width="60" height="60" />
                 </g>
             </g>
         </svg>
@@ -295,7 +295,7 @@
                     </div>
                 </div>
                     <button type="submit" class="btn">Submit</button>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Cancel Report</button>
                 </div>
             </form>
         </div>
